@@ -1,0 +1,80 @@
+bio_id:
+  type: string
+  required: True
+  empty: False
+  dependencies: patient_id
+  check_with: bio_id
+patient_id:
+  type: string
+  required: True
+  empty: False
+  check_with: patient_id
+blood_type:
+  type: string
+  required: True
+  allowed:
+    - A-
+    - A+
+    - B-
+    - B+
+    - AB-
+    - AB+
+    - O-
+    - O+
+  coerce: capitalize
+additional_blood_type_signifiers:
+  type: string
+  required: False
+blood_sample_id:
+  type: string
+  required: True
+  check_with: blood_sample_id
+date_during_draw:
+  type: string
+  required: True
+  coerce: yyyy_mm_dd
+organ_donor:
+  type: string
+  required: False
+  allowed: # Must be in quotes
+    - "Yes"
+    - "No"
+  coerce: first_letter_capitalize
+height:
+  type: string
+  required: False
+  check_with: is_integer
+weight:
+  type: string
+  required: False
+  check_with: is_integer
+age:
+  type: string
+  required: False
+  check_with: is_integer
+age_during_blood_draw:
+  type: string
+  required: False
+  check_with: is_integer
+  dependencies: age
+medical_history:
+  type: string
+  required: False
+  allowed:
+    - Unknown
+    - Processing
+    - Recorded
+    - In system
+  coerce: first_letter_capitalize
+med_id:
+  type: string
+  required: False
+  dependencies:
+    medical_history: 
+      allowed:
+        - Processing
+        - Recorded
+        - In system
+additionaL_notes:
+  type: string
+  required: False
