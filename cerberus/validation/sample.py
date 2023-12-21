@@ -1,5 +1,4 @@
 from datetime import datetime
-from string import capwords
 
 from cerberus import Validator
 
